@@ -4,7 +4,9 @@
 
 **Live app** 👉 [https://mediumtocgenerator.streamlit.app](https://mediumtocgenerator.streamlit.app)
 
-![Preview of Medium TOC Generator](app_preview.gif)
+<p align="center">
+  <img src="app_preview.gif" alt="GIF preview of Medium TOC Generator" width="500"/>
+</p>
 
 A simple web app that generates a Table of Contents (TOC) for Medium articles.
 
