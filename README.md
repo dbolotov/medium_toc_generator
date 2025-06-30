@@ -1,6 +1,10 @@
+
+
 # Medium Table of Contents Generator
 
 **Live app** 👉 [https://mediumtocgenerator.streamlit.app](https://mediumtocgenerator.streamlit.app)
+
+![Preview of Medium TOC Generator](app_preview.gif)
 
 A simple web app that generates a Table of Contents (TOC) for Medium articles.
 
