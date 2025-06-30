@@ -78,7 +78,7 @@ with right_col:
     st.markdown("### Instructions")
     st.markdown(
         """
-    1. Choose input method (**URL** or **HTML**), paste the link or HTML in the box, and press Enter.\n
+    1. Choose input method (**URL** or **HTML**), paste the link or HTML in the box, and press `Enter` (or `Ctrl+Enter` for HTML).\n
         *Note: Try URL first. If the TOC looks incomplete, switch to 'Paste HTML'. Some Medium articles load content dynamically, so the URL method may miss sections.*\n
         *To get the full HTML: Right-click on the Medium page, choose **"View Page Source"**, select all and copy, paste it here.*\n
     2. The Table of Contents will appear. It contains all the headings in the article, each followed by its id (for example: `#1234ab`).\n
