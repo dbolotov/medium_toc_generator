@@ -1,4 +1,4 @@
-# Medium TOC Generator
+# Medium Table of Contents Generator
 
 A simple web app that generates a Table of Contents (TOC) for Medium articles.
 
