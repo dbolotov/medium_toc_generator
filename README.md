@@ -1,11 +1,13 @@
 # Medium Table of Contents Generator
 
+**Live app** 👉 [https://mediumtocgenerator.streamlit.app](https://mediumtocgenerator.streamlit.app)
+
 A simple web app that generates a Table of Contents (TOC) for Medium articles.
 
 **Why?** Medium doesn’t support automatic TOC generation.
 
 ## What it does
 
-- Extracts all headings from a Medium article
-- Preserves the order and indentation based on heading level
-- Shows each heading's ID so you can manually create internal links
+- Extracts all section headings from a Medium article
+- Keeps their order and indentation (based on heading level)
+- Shows each heading’s ID so you can manually add internal links
