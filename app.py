@@ -2,44 +2,40 @@ import streamlit as st
 import requests
 from bs4 import BeautifulSoup
 
-st.set_page_config(page_title="Medium TOC Generator", layout="wide")
-st.markdown(
-    """
-    <style>
-        .block-container {
-            padding-top: 1rem;
-        }
-    </style>
-    """,
-    unsafe_allow_html=True,
-)
-st.markdown(
-    "<h1 style='text-align: center;'>Medium Table of Contents Generator</h1>",
-    unsafe_allow_html=True,
-)
-st.markdown("---")
+def extract_headings(html):
+    soup = BeautifulSoup(html, "html.parser")
+    headings = []
+    for h in soup.find_all(["h1", "h2", "h3", "h4"]):
+        id_attr = h.get("id")
+        text = h.get_text(strip=True)
+        if id_attr and text:
+            level = int(h.name[1])
+            headings.append((level, text, id_attr))
+    return headings
 
-left_spacer, left_col, right_col, right_spacer = st.columns([1, 5, 4, 1])
+
+with open("styles.css") as f:
+    st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+
+
+st.set_page_config(page_title="Medium TOC Generator", layout="wide")
+
+
+left_spacer, left_col, c_spacer, right_col, right_spacer = st.columns([1, 5, 0.3, 4, 1])
 
 with left_col:
 
+    st.markdown('<div class="boxed-title">Medium Table of Contents Generator</div>', unsafe_allow_html=True)
+
     input_mode = st.radio("Choose input method", ["URL", "HTML"])
 
-    def extract_headings(html):
-        soup = BeautifulSoup(html, "html.parser")
-        headings = []
-        for h in soup.find_all(["h1", "h2", "h3", "h4"]):
-            id_attr = h.get("id")
-            text = h.get_text(strip=True)
-            if id_attr and text:
-                level = int(h.name[1])
-                headings.append((level, text, id_attr))
-        return headings
+
 
     html = None
 
     if input_mode == "URL":
         url = st.text_input("Medium article URL", placeholder="https://medium.com/your-article")
+
         if url:
             try:
                 res = requests.get(
@@ -53,8 +49,11 @@ with left_col:
             except Exception as e:
                 st.error(f"Error fetching article: {e}")
     else:
-        html = st.text_area("Medium article HTML", height=300,
-                            placeholder="Paste the full HTML source here")
+        html = st.text_area(
+            "Medium article HTML",
+            height=300,
+            placeholder="Paste the full HTML source here",
+        )
 
     if html:
         headings = extract_headings(html)
@@ -72,7 +71,10 @@ with left_col:
 with right_col:
     st.markdown("### About")
     st.markdown(
-        "Generate a Table of Contents and the necessary link ids for adding to your articles on Medium. Supports two levels of indentation.\n"
+
+        "Generate a Table of Contents and the necessary link ids for your articles on Medium.com.\n\n"
+        
+        "**Why the need for this app?** Medium doesn’t support automatic TOC generation when creating articles.\n"
     )
 
     st.markdown("### Instructions")
